@@ -3,56 +3,456 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucas Melo | Portfolio</title>
+  <title>Lucas Melo | Product Manager</title>
   <style>
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #1f4b99;
+      --accent-hover: #163974;
+      --max-width: 1080px;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 24px;
+      padding: 18px 0;
+      gap: 20px;
     }
-    .card {
-      max-width: 720px;
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
     }
-    h1 {
-      font-size: 3rem;
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       margin-bottom: 12px;
     }
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: #d0d0d0;
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin: 0 0 18px;
     }
-    a.button {
+
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0 0 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .button {
       display: inline-block;
-      margin-top: 24px;
-      padding: 12px 20px;
-      background: #fff;
-      color: #111;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
     }
-    a.button:hover {
-      opacity: 0.9;
+
+    .button.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .button.primary:hover {
+      background: var(--accent-hover);
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      background: white;
+      color: var(--text);
+    }
+
+    .button.secondary:hover {
+      background: #f9fafb;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 18px 0 42px;
+    }
+
+    .section-title {
+      font-size: 1.7rem;
+      margin: 0 0 18px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      margin: 18px 0 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      background: #eef2ff;
+      color: #243b6b;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .experience-item + .experience-item {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .role-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .role-line strong {
+      font-size: 1.05rem;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    footer {
+      padding: 28px 0 48px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 30px 22px;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Lucas Melo</h1>
-    <p>AI Product Manager / Product Manager</p>
-    <p>
-      I build product strategies, define requirements, and turn complex problems
-      into clear user-focused solutions.
-    </p>
-    <a class="button" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-  </div>
+  <header>
+    <div class="container nav">
+      <div class="brand">Lucas Melo</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="eyebrow">Product Management</div>
+          <h1>AI Product Manager / Product Manager</h1>
+          <p>
+            I work at the intersection of product strategy, user needs, and delivery execution.
+            My background combines product ownership, platform thinking, mobile product work,
+            and technical collaboration across cross-functional teams.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">View Projects</a>
+            <a class="button secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="section-intro">
+          Product Manager and Product Owner with 5+ years of experience leading platform
+          and software products across discovery, specification, prioritisation, and delivery.
+          I bring a mix of enterprise platform ownership, customer-facing mobile product work,
+          and strong technical credibility built through QA and software delivery.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>What I do well</h3>
+            <p>
+              I turn complexity into clear priorities, align teams around real user and business needs,
+              and help drive execution from idea to delivery.
+            </p>
+          </div>
+          <div class="card">
+            <h3>My focus</h3>
+            <p>
+              Product strategy, requirements definition, stakeholder alignment, agile delivery,
+              user-centred problem solving, and collaboration with engineering teams.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-intro">
+          A selection of work that reflects my experience in product definition, delivery, and platform thinking.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Enterprise Data Platform Work</h3>
+            <p>
+              Contributed to complex platform initiatives involving data products, cross-team coordination,
+              requirement definition, and delivery alignment in an enterprise environment.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Mobile Product Experience</h3>
+            <p>
+              Worked on customer-facing product contexts where usability, business priorities,
+              and delivery quality had to be balanced in fast-moving environments.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>AI and Product Thinking</h3>
+            <p>
+              Exploring how AI can improve product workflows, user experiences, prioritisation,
+              and decision-making across modern digital products.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Discovery to Delivery</h3>
+            <p>
+              Experience supporting the full product lifecycle: problem framing, backlog shaping,
+              stakeholder communication, refinement, and execution with engineering.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="card">
+          <div class="experience-item">
+            <div class="role-line">
+              <strong>Diconium / Volkswagen Data-related environment</strong>
+              <span class="date">Product / platform experience</span>
+            </div>
+            <p>
+              Worked in a technical product environment involving platform complexity, coordination,
+              and structured product thinking across teams and systems.
+            </p>
+          </div>
+
+          <div class="experience-item">
+            <div class="role-line">
+              <strong>Santander Brasil</strong>
+              <span class="date">Mobile product experience</span>
+            </div>
+            <p>
+              Contributed to product work in a mobile context, supporting customer-facing experiences,
+              delivery quality, and alignment between product and implementation.
+            </p>
+          </div>
+
+          <div class="experience-item">
+            <div class="role-line">
+              <strong>Quality Assurance / Technical Delivery Background</strong>
+              <span class="date">Foundation</span>
+            </div>
+            <p>
+              Built a strong technical foundation through QA and delivery work, which strengthens
+              collaboration with engineering teams and improves execution quality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+
+        <div class="card">
+          <ul class="tag-list">
+            <li>Product Strategy</li>
+            <li>Discovery</li>
+            <li>PRDs</li>
+            <li>Backlog Prioritisation</li>
+            <li>Stakeholder Management</li>
+            <li>Agile Delivery</li>
+            <li>User-Centred Thinking</li>
+            <li>Cross-Functional Collaboration</li>
+            <li>Problem Solving</li>
+            <li>Communication</li>
+            <li>Negotiation</li>
+            <li>Quality Assurance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+
+        <div class="card">
+          <div class="contact-list">
+            <div>Email: your-email@example.com</div>
+            <div>LinkedIn: <a href="https://www.linkedin.com/" target="_blank">Add your LinkedIn profile</a></div>
+            <div>GitHub: <a href="https://github.com/" target="_blank">Add your GitHub profile</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Lucas Melo. All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>
