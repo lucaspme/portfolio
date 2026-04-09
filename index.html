@@ -3,456 +3,429 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucas Melo | Product Manager</title>
+  <title>Lucas Pereira de Melo – AI Product Manager</title>
+  <meta name="description" content="Portfolio of Lucas Pereira de Melo – AI Product Manager and Product Owner with 5+ years of experience in digital and data-driven products." />
+  <meta name="author" content="Lucas Pereira de Melo" />
+  <meta property="og:title" content="Lucas Pereira de Melo – AI Product Manager" />
+  <meta property="og:description" content="Product Manager with 5+ years of experience delivering digital and data-driven products." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --bg: #f5f7fa;
-      --surface: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --accent: #1f4b99;
-      --accent-hover: #163974;
-      --max-width: 1080px;
-      --radius: 14px;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      --bg: hsl(40, 20%, 98%);
+      --fg: hsl(220, 20%, 18%);
+      --card: hsl(0, 0%, 100%);
+      --secondary-bg: hsl(220, 15%, 94%);
+      --muted: hsl(220, 10%, 46%);
+      --accent: hsl(220, 45%, 42%);
+      --border: hsl(220, 15%, 90%);
+      --radius: 0.5rem;
+      --heading-font: 'Source Serif 4', Georgia, serif;
+      --body-font: 'Inter', system-ui, sans-serif;
+      --shadow-card: 0 1px 3px 0 hsl(220 20% 18% / 0.04), 0 1px 2px -1px hsl(220 20% 18% / 0.04);
+      --shadow-card-hover: 0 4px 12px 0 hsl(220 20% 18% / 0.08), 0 2px 4px -1px hsl(220 20% 18% / 0.04);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body-font); background: var(--bg); color: var(--fg); line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: var(--heading-font); }
+    a { color: inherit; text-decoration: none; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+    @media (min-width: 768px) { .container { padding: 0 2rem; } }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    .section { padding: 4rem 0; }
+    @media (min-width: 768px) { .section { padding: 6rem 0; } }
+    .section-alt { background: hsl(220, 15%, 94%, 0.4); }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    .section-title { font-size: 1.5rem; font-weight: 600; color: var(--fg); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+    @media (min-width: 768px) { .section-title { font-size: 1.875rem; } }
+    .section-subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 2.5rem; }
+    @media (min-width: 768px) { .section-subtitle { font-size: 1.125rem; margin-bottom: 3.5rem; } }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    .card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); padding: 1.5rem; box-shadow: var(--shadow-card); transition: box-shadow 0.2s ease, border-color 0.2s ease; }
+    .card:hover { box-shadow: var(--shadow-card-hover); border-color: hsl(220, 45%, 42%, 0.2); }
 
-    .container {
-      width: min(100% - 32px, var(--max-width));
-      margin: 0 auto;
-    }
+    .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--body-font); font-size: 0.875rem; font-weight: 500; padding: 0.5rem 1rem; border-radius: var(--radius); border: 1px solid transparent; cursor: pointer; transition: all 0.15s ease; text-decoration: none; }
+    .btn-primary { background: var(--fg); color: var(--bg); }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-outline { background: transparent; color: var(--fg); border-color: var(--border); }
+    .btn-outline:hover { background: var(--secondary-bg); }
+    .btn-ghost { background: transparent; color: var(--fg); }
+    .btn-ghost:hover { background: var(--secondary-bg); }
+    .btn-sm { font-size: 0.8125rem; padding: 0.375rem 0.75rem; }
 
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
+    .tag { display: inline-block; font-size: 0.8125rem; color: var(--muted); background: var(--secondary-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.375rem 0.75rem; }
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-      gap: 20px;
-    }
+    /* Nav */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: all 0.3s ease; }
+    .nav.scrolled { background: hsl(40, 20%, 98%, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); box-shadow: 0 1px 3px hsl(220 20% 18% / 0.04); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+    .nav-brand { font-family: var(--heading-font); font-size: 1.125rem; font-weight: 600; color: var(--fg); letter-spacing: -0.01em; }
+    .nav-links { display: none; align-items: center; gap: 2rem; }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+    .nav-links a { font-size: 0.875rem; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-toggle { display: flex; padding: 0.5rem; background: none; border: none; color: var(--muted); cursor: pointer; }
+    @media (min-width: 768px) { .nav-toggle { display: none; } }
+    .mobile-menu { display: none; background: hsl(40, 20%, 98%, 0.98); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+    .mobile-menu.open { display: block; }
+    @media (min-width: 768px) { .mobile-menu { display: none !important; } }
+    .mobile-menu a { display: block; font-size: 0.875rem; color: var(--muted); padding: 0.375rem 0; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--fg); }
 
-    .brand {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text);
-    }
+    /* Grid helpers */
+    .grid-2 { display: grid; gap: 1.5rem; }
+    @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+    .grid-3 { display: grid; gap: 2rem; }
+    @media (min-width: 768px) { .grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
 
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+    .max-w-sm { max-width: 42rem; }
+    .max-w-md { max-width: 48rem; }
+    .max-w-lg { max-width: 64rem; }
 
-    .nav-links a {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+    /* Specific */
+    .hero { padding-top: 7rem; padding-bottom: 4rem; }
+    @media (min-width: 768px) { .hero { padding-top: 9rem; padding-bottom: 6rem; } }
+    .hero-label { font-size: 0.875rem; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .hero h1 { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; }
+    @media (min-width: 768px) { .hero h1 { font-size: 3rem; } }
+    @media (min-width: 1024px) { .hero h1 { font-size: 3.75rem; } }
+    .hero-role { font-size: 1.125rem; color: var(--muted); font-weight: 500; margin-bottom: 1.5rem; }
+    @media (min-width: 768px) { .hero-role { font-size: 1.25rem; } }
+    .hero-desc { font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 42rem; margin-bottom: 2.5rem; }
+    @media (min-width: 768px) { .hero-desc { font-size: 1.125rem; } }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-    .hero {
-      padding: 72px 0 48px;
-    }
+    .exp-header { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0.75rem; }
+    @media (min-width: 640px) { .exp-header { flex-direction: row; align-items: baseline; justify-content: space-between; } }
+    .exp-role { font-size: 0.875rem; color: var(--accent); font-weight: 500; }
+    .exp-period { font-size: 0.875rem; color: var(--muted); }
+    .exp-list { list-style: none; padding: 0; }
+    .exp-list li { font-size: 0.9375rem; color: var(--muted); line-height: 1.6; padding-left: 1rem; position: relative; margin-bottom: 0.375rem; }
+    .exp-list li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 
-    .hero-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 48px;
-    }
+    .project-type { font-size: 0.75rem; font-weight: 500; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .project-title { font-family: var(--heading-font); font-size: 1.25rem; font-weight: 600; color: var(--fg); margin-bottom: 0.5rem; }
+    .project-role { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.25rem; }
+    .project-role strong { font-weight: 500; color: hsl(220, 20%, 18%, 0.8); }
+    .project-desc { font-size: 0.9375rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.25rem; flex: 1; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
-    .eyebrow {
-      color: var(--accent);
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
+    .edu-item { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-title { font-weight: 500; color: var(--fg); font-size: 0.9375rem; }
+    .edu-org { font-size: 0.875rem; color: var(--muted); }
+    .edu-year { font-size: 0.875rem; color: var(--muted); flex-shrink: 0; }
 
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.1;
-      margin: 0 0 18px;
-    }
+    .contact-center { text-align: center; max-width: 36rem; margin: 0 auto; }
+    .contact-info { margin-bottom: 2rem; }
+    .contact-info p { font-size: 0.9375rem; color: var(--fg); margin-bottom: 0.75rem; }
+    .contact-info a { transition: color 0.2s; }
+    .contact-info a:hover { color: var(--accent); }
+    .contact-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
-    .hero p {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin: 0 0 26px;
-    }
+    footer { padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; }
+    footer p { font-size: 0.875rem; color: var(--muted); }
 
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 22px;
-    }
+    .skill-group-title { font-family: var(--heading-font); font-size: 1rem; font-weight: 600; color: var(--fg); margin-bottom: 1rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
-    .button {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      border: 1px solid var(--line);
-      transition: 0.2s ease;
-    }
-
-    .button.primary {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
-    }
-
-    .button.primary:hover {
-      background: var(--accent-hover);
-      text-decoration: none;
-    }
-
-    .button.secondary {
-      background: white;
-      color: var(--text);
-    }
-
-    .button.secondary:hover {
-      background: #f9fafb;
-      text-decoration: none;
-    }
-
-    section {
-      padding: 18px 0 42px;
-    }
-
-    .section-title {
-      font-size: 1.7rem;
-      margin: 0 0 18px;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      margin: 0 0 24px;
-      max-width: 760px;
-    }
-
-    .grid {
-      display: grid;
-      gap: 20px;
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.15rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 0;
-      margin: 18px 0 0;
-      list-style: none;
-    }
-
-    .tag-list li {
-      background: #eef2ff;
-      color: #243b6b;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.92rem;
-      font-weight: 600;
-    }
-
-    .experience-item + .experience-item {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-    }
-
-    .role-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 6px;
-    }
-
-    .role-line strong {
-      font-size: 1.05rem;
-    }
-
-    .date {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    footer {
-      padding: 28px 0 48px;
-      color: var(--muted);
-      font-size: 0.95rem;
-      text-align: center;
-    }
-
-    @media (max-width: 800px) {
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card {
-        padding: 30px 22px;
-      }
-
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
+    .space-y > * + * { margin-top: 1.5rem; }
+    .edu-space > * + * { margin-top: 1rem; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">Lucas Melo</div>
-      <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-brand">Lucas Pereira de Melo</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </div>
-  </header>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M3 6h14M3 10h14M3 14h14" id="menuIcon" />
+      </svg>
+    </button>
+  </div>
+  <div class="mobile-menu container" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="eyebrow">Product Management</div>
-          <h1>AI Product Manager / Product Manager</h1>
-          <p>
-            I work at the intersection of product strategy, user needs, and delivery execution.
-            My background combines product ownership, platform thinking, mobile product work,
-            and technical collaboration across cross-functional teams.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#projects">View Projects</a>
-            <a class="button secondary" href="#contact">Contact Me</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">About</h2>
-        <p class="section-intro">
-          Product Manager and Product Owner with 5+ years of experience leading platform
-          and software products across discovery, specification, prioritisation, and delivery.
-          I bring a mix of enterprise platform ownership, customer-facing mobile product work,
-          and strong technical credibility built through QA and software delivery.
-        </p>
-
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>What I do well</h3>
-            <p>
-              I turn complexity into clear priorities, align teams around real user and business needs,
-              and help drive execution from idea to delivery.
-            </p>
-          </div>
-          <div class="card">
-            <h3>My focus</h3>
-            <p>
-              Product strategy, requirements definition, stakeholder alignment, agile delivery,
-              user-centred problem solving, and collaboration with engineering teams.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-intro">
-          A selection of work that reflects my experience in product definition, delivery, and platform thinking.
-        </p>
-
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Enterprise Data Platform Work</h3>
-            <p>
-              Contributed to complex platform initiatives involving data products, cross-team coordination,
-              requirement definition, and delivery alignment in an enterprise environment.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Mobile Product Experience</h3>
-            <p>
-              Worked on customer-facing product contexts where usability, business priorities,
-              and delivery quality had to be balanced in fast-moving environments.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>AI and Product Thinking</h3>
-            <p>
-              Exploring how AI can improve product workflows, user experiences, prioritisation,
-              and decision-making across modern digital products.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Discovery to Delivery</h3>
-            <p>
-              Experience supporting the full product lifecycle: problem framing, backlog shaping,
-              stakeholder communication, refinement, and execution with engineering.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="container">
-        <h2 class="section-title">Experience</h2>
-
-        <div class="card">
-          <div class="experience-item">
-            <div class="role-line">
-              <strong>Diconium / Volkswagen Data-related environment</strong>
-              <span class="date">Product / platform experience</span>
-            </div>
-            <p>
-              Worked in a technical product environment involving platform complexity, coordination,
-              and structured product thinking across teams and systems.
-            </p>
-          </div>
-
-          <div class="experience-item">
-            <div class="role-line">
-              <strong>Santander Brasil</strong>
-              <span class="date">Mobile product experience</span>
-            </div>
-            <p>
-              Contributed to product work in a mobile context, supporting customer-facing experiences,
-              delivery quality, and alignment between product and implementation.
-            </p>
-          </div>
-
-          <div class="experience-item">
-            <div class="role-line">
-              <strong>Quality Assurance / Technical Delivery Background</strong>
-              <span class="date">Foundation</span>
-            </div>
-            <p>
-              Built a strong technical foundation through QA and delivery work, which strengthens
-              collaboration with engineering teams and improves execution quality.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-
-        <div class="card">
-          <ul class="tag-list">
-            <li>Product Strategy</li>
-            <li>Discovery</li>
-            <li>PRDs</li>
-            <li>Backlog Prioritisation</li>
-            <li>Stakeholder Management</li>
-            <li>Agile Delivery</li>
-            <li>User-Centred Thinking</li>
-            <li>Cross-Functional Collaboration</li>
-            <li>Problem Solving</li>
-            <li>Communication</li>
-            <li>Negotiation</li>
-            <li>Quality Assurance</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-
-        <div class="card">
-          <div class="contact-list">
-            <div>Email: your-email@example.com</div>
-            <div>LinkedIn: <a href="https://www.linkedin.com/" target="_blank">Add your LinkedIn profile</a></div>
-            <div>GitHub: <a href="https://github.com/" target="_blank">Add your GitHub profile</a></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      © 2026 Lucas Melo. All rights reserved.
+<!-- HERO -->
+<section class="hero">
+  <div class="container" style="max-width:48rem;">
+    <p class="hero-label">Berlin, Germany</p>
+    <h1>Lucas Pereira de Melo</h1>
+    <p class="hero-role">AI Product Manager · Product Manager · Product Owner</p>
+    <p class="hero-desc">Product Manager / Product Owner with 5+ years of experience delivering digital and data-driven products across enterprise platforms and customer-facing mobile applications. Proven track record contributing to high-impact initiatives at Volkswagen and Santander. Combines strong product thinking with a technical background in quality engineering and data platforms.</p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Contact</a>
+      <a href="https://docs.google.com/document/d/1W7sAbiP-ACHWwfBjgknFOd_yJtanGgCccVpUNYbbSkU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Download CV ↓</a>
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">About</h2>
+    <p class="section-subtitle">How I work and what I bring to a team.</p>
+    <div class="grid-2 max-w-md">
+      <div>
+        <h3 style="font-family:var(--heading-font);font-size:1.125rem;font-weight:600;margin-bottom:0.75rem;">Product Craft</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">I work across product discovery, backlog management and prioritisation, user story writing with clear acceptance criteria, agile delivery, and metrics-informed product thinking. I align business goals with user needs through structured stakeholder management and cross-functional collaboration.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--heading-font);font-size:1.125rem;font-weight:600;margin-bottom:0.75rem;">Technical Credibility</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">My background in quality assurance, test automation, SQL, REST APIs, and data platform environments gives me the technical fluency to work closely with engineering teams, ask the right questions, and make well-informed trade-off decisions throughout the product lifecycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
+    <p class="section-subtitle">Roles that shaped my product thinking.</p>
+    <div class="space-y" style="max-width:48rem;">
+
+      <div class="card">
+        <div class="exp-header">
+          <div>
+            <h3 style="font-family:var(--heading-font);font-size:1.125rem;font-weight:600;">Diconium GmbH</h3>
+            <p class="exp-role">Product Owner / Test Manager</p>
+          </div>
+          <span class="exp-period">2021–2025</span>
+        </div>
+        <ul class="exp-list">
+          <li>Owned backlog and prioritisation for VW Data Shop (Collibra), supporting metadata across 15K+ applications</li>
+          <li>Led integration work enabling scalable data ingestion and governance flows</li>
+          <li>Translated complex technical requirements into clear user stories</li>
+          <li>Defined test strategy and automation with Cypress to improve release quality and delivery confidence</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="exp-header">
+          <div>
+            <h3 style="font-family:var(--heading-font);font-size:1.125rem;font-weight:600;">Santander Brasil</h3>
+            <p class="exp-role">Product Owner</p>
+          </div>
+          <span class="exp-period">2017–2019</span>
+        </div>
+        <ul class="exp-list">
+          <li>Led product improvements for Santander's mobile banking app</li>
+          <li>Focused on user experience and app performance</li>
+          <li>Helped increase app rating from 1.7 to 4.6 on Google Play by prioritising user pain points</li>
+          <li>Worked cross-functionally to deliver customer-centric improvements</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="exp-header">
+          <div>
+            <h3 style="font-family:var(--heading-font);font-size:1.125rem;font-weight:600;">Inmetrics S/A</h3>
+            <p class="exp-role">QA Manager</p>
+          </div>
+          <span class="exp-period">2013–2017</span>
+        </div>
+        <ul class="exp-list">
+          <li>Managed QA for Cielo BI platform</li>
+          <li>Worked with Oracle and MicroStrategy environments</li>
+          <li>Implemented automation with Ruby and BDD</li>
+          <li>Facilitated agile ceremonies and contributed to backlog refinement</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section section-alt">
+  <div class="container">
+    <p class="hero-label" style="margin-bottom:0.5rem;">Selected Work</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtitle">Case studies and product work that showcase my approach.</p>
+    <div class="grid-2 max-w-md" style="align-items:stretch;">
+
+      <!-- Pulse -->
+      <div class="card" style="display:flex;flex-direction:column;">
+        <p class="project-type">Product concept &amp; redesign case study</p>
+        <h3 class="project-title">Pulse / Supercell ID 2.0</h3>
+        <p class="project-role"><strong>Role:</strong> Product Manager (case study)</p>
+        <p class="project-desc">A strategic PM case study created for Supercell, addressing identity, account continuity, multi-account usability, and live ops engagement opportunities. Combines product thinking, user problem framing, account ecosystem design, UX improvements, and growth levers into one flagship case.</p>
+        <div class="project-links">
+          <a href="https://multi-account-nest.lovable.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Prototype</a>
+          <a href="https://www.notion.so/Pulse-Game-ID-and-Live-Ops-32fc0c29abbd80b8aeecc309c753a084?source=copy_link" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Documentation</a>
+        </div>
+      </div>
+
+      <!-- Kindred -->
+      <div class="card" style="display:flex;flex-direction:column;">
+        <p class="project-type">AI app · Bootcamp project</p>
+        <h3 class="project-title">Kindred</h3>
+        <p class="project-role"><strong>Role:</strong> AI Product Manager</p>
+        <p class="project-desc">An AI-native product concept developed during the AI PM bootcamp, focused on helping people meet like-minded individuals nearby through intelligent matching and contextual recommendations.</p>
+        <div class="project-links">
+          <a href="https://kindredaiapp.lovable.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">View Project</a>
+        </div>
+      </div>
+
+      <!-- QTIME -->
+      <div class="card" style="display:flex;flex-direction:column;">
+        <p class="project-type">Product / app project</p>
+        <h3 class="project-title">QTIME</h3>
+        <p class="project-role"><strong>Role:</strong> Product Manager</p>
+        <p class="project-desc">QTIME is a product project focused on helping users manage and value their time. A clean digital product case that demonstrates product thinking, usability focus, and execution.</p>
+        <div class="project-links">
+          <a href="https://qtime.lovable.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">View Project</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-subtitle">Core competencies and working languages.</p>
+    <div class="grid-3 max-w-md">
+      <div>
+        <h3 class="skill-group-title">Hard Skills</h3>
+        <div class="tags">
+          <span class="tag">Product Discovery and Delivery</span>
+          <span class="tag">Backlog Management and Prioritisation</span>
+          <span class="tag">User Stories and Acceptance Criteria</span>
+          <span class="tag">Agile Methodologies</span>
+          <span class="tag">SQL</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">Quality Assurance</span>
+          <span class="tag">Test Automation</span>
+          <span class="tag">Data Platforms</span>
+          <span class="tag">Stakeholder Management</span>
+          <span class="tag">Product Metrics</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="skill-group-title">Soft Skills</h3>
+        <div class="tags">
+          <span class="tag">Problem Solving</span>
+          <span class="tag">Structured Thinking</span>
+          <span class="tag">Communication</span>
+          <span class="tag">Cross-functional Alignment</span>
+          <span class="tag">User-Centric Mindset</span>
+          <span class="tag">Negotiation</span>
+          <span class="tag">Stakeholder Influence</span>
+          <span class="tag">Resilience</span>
+          <span class="tag">Ownership</span>
+          <span class="tag">Leadership</span>
+          <span class="tag">Team Facilitation</span>
+        </div>
+      </div>
+      <div>
+        <h3 class="skill-group-title">Languages</h3>
+        <div class="tags">
+          <span class="tag">Portuguese (Native)</span>
+          <span class="tag">English (Fluent)</span>
+          <span class="tag">Spanish (Fluent)</span>
+          <span class="tag">German (A2)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Education &amp; Certifications</h2>
+    <p class="section-subtitle">Formal training and credentials.</p>
+    <div class="edu-space" style="max-width:36rem;">
+      <div class="edu-item">
+        <div><p class="edu-title">AI PM Bootcamp</p><p class="edu-org">Iron Hack</p></div>
+        <span class="edu-year">2026</span>
+      </div>
+      <div class="edu-item">
+        <div><p class="edu-title">Certified Scrum Product Owner</p><p class="edu-org">Scrum Alliance</p></div>
+        <span class="edu-year"></span>
+      </div>
+      <div class="edu-item">
+        <div><p class="edu-title">Computer Science</p><p class="edu-org">São Judas Tadeu University</p></div>
+        <span class="edu-year"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-center">
+      <h2 class="section-title">Get in Touch</h2>
+      <p style="color:var(--muted);font-size:1rem;margin-bottom:2rem;line-height:1.7;">Open to Product Manager, Product Owner, and AI Product opportunities.</p>
+      <div class="contact-info">
+        <p><a href="mailto:lucas.p.melo@gmail.com">lucas.p.melo@gmail.com</a></p>
+        <p><a href="tel:+4915758463880">+49 157 58463880</a></p>
+      </div>
+      <div class="contact-buttons">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">LinkedIn</a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">GitHub</a>
+        <a href="mailto:lucas.p.melo@gmail.com" class="btn btn-primary btn-sm">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Lucas Pereira de Melo. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav scroll effect
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  const icon = document.getElementById('menuIcon');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    icon.setAttribute('d', open ? 'M5 5l10 10M15 5L5 15' : 'M3 6h14M3 10h14M3 14h14');
+  });
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      icon.setAttribute('d', 'M3 6h14M3 10h14M3 14h14');
+    });
+  });
+</script>
 </body>
 </html>
