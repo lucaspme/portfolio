@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucas Melo | Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      max-width: 720px;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #d0d0d0;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 20px;
+      background: #fff;
+      color: #111;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    a.button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Lucas Melo</h1>
+    <p>AI Product Manager / Product Manager</p>
+    <p>
+      I build product strategies, define requirements, and turn complex problems
+      into clear user-focused solutions.
+    </p>
+    <a class="button" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+  </div>
+</body>
+</html>
